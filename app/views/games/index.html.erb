@@ -1,0 +1,31 @@
+<h1>Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Rink</th>
+      <th>Home Team</th>
+      <th>Home Score</th>
+      <th>Away Score</th>
+      <th>Away Team</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td>
+          <time datetime="<%= game.scheduled_at.iso8601 %>">
+            <%= game.scheduled_at.in_time_zone("Eastern Time (US & Canada)").to_formatted_s(:short) %>
+          </time>
+        </td>
+        <td><%= game.rink %></td>
+        <td><%= game.home_team %></td>
+        <td><%= game.home_score %></td>
+        <td><%= game.away_score %></td>
+        <td><%= game.away_team %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
