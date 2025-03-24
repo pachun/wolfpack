@@ -1,24 +1,21 @@
-# README
+# Wolfpack
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web app for managing the wolfpack hockey team's games and stats.
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+```sh
+bundle install
+```
 
-* System dependencies
+## Run
 
-* Configuration
+```sh
+bin/dev
+```
 
-* Database creation
+## Test
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+bin/rails db:test:prepare test test:system
+```
