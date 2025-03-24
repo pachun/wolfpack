@@ -1,31 +1,56 @@
-<h1>Games</h1>
+<h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Games</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Time</th>
-      <th>Rink</th>
-      <th>Home Team</th>
-      <th>Home Score</th>
-      <th>Away Score</th>
-      <th>Away Team</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @games.each do |game| %>
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow">
+    <thead>
       <tr>
-        <td>
-          <time datetime="<%= game.scheduled_at.iso8601 %>">
-            <%= game.scheduled_at.in_time_zone("Eastern Time (US & Canada)").to_formatted_s(:short) %>
-          </time>
-        </td>
-        <td><%= game.rink %></td>
-        <td><%= game.home_team %></td>
-        <td><%= game.home_score %></td>
-        <td><%= game.away_score %></td>
-        <td><%= game.away_team %></td>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Time
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Rink
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Home Team
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Home Score
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Away Score
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Away Team
+        </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @games.each_with_index do |game, index| %>
+        <% last_row = index == @games.size - 1 %>
+        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-bl-lg' if last_row %>">
+            <time datetime="<%= game.scheduled_at.iso8601 %>">
+              <%= game.scheduled_at.in_time_zone("Eastern Time (US & Canada)").to_formatted_s(:short) %>
+            </time>
+          </td>
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+            <%= game.rink %>
+          </td>
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+            <%= game.home_team %>
+          </td>
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+            <%= game.home_score %>
+          </td>
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+            <%= game.away_score %>
+          </td>
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-br-lg' if last_row %>">
+            <%= game.away_team %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
