@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 class ViewingGamesTest < ApplicationSystemTestCase
-  test "visiting the index" do
+  test "visiting /games" do
     game = Game.create!(
       rink: "D",
       home_team: "Wolfpack",
