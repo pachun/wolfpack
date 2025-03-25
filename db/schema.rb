@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_24_042942) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_25_225055) do
   create_table "games", force: :cascade do |t|
-    t.datetime "scheduled_at"
-    t.string "home_team"
-    t.string "away_team"
+    t.datetime "scheduled_at", null: false
+    t.string "home_team", null: false
+    t.string "away_team", null: false
     t.integer "home_score"
     t.integer "away_score"
-    t.string "rink"
+    t.string "rink", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
