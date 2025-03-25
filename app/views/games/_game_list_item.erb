@@ -1,0 +1,25 @@
+<tr class="game-list-item-<%= game.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-bl-lg' if is_last_row %>">
+    <time datetime="<%= game.scheduled_at.iso8601 %>">
+      <%= game.scheduled_at.in_time_zone("Eastern Time (US & Canada)").to_formatted_s(:short) %>
+    </time>
+  </td>
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+    <%= game.rink %>
+  </td>
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+    <%= game.home_team %>
+  </td>
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+    <%= game.home_score %>
+  </td>
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+    <%= game.away_score %>
+  </td>
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
+    <%= game.away_team %>
+  </td>
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-br-lg' if is_last_row %>">
+    <%= link_to "Edit", edit_game_path(game), class: "text-indigo-600 hover:text-indigo-900 font-medium" %>
+  </td>
+</tr>

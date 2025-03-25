@@ -1,0 +1,34 @@
+<div class="game-list overflow-x-auto">
+  <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow">
+    <thead>
+      <tr>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Time
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Rink
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Home Team
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Home Score
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Away Score
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Away Team
+        </th>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% games.each_with_index do |game, index| %>
+        <% is_last_row = index == games.size - 1 %>
+        <%= render "games/game_list_item", game: game, is_last_row: is_last_row %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
