@@ -1,8 +1,6 @@
 <tr class="game-list-item-<%= game.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-bl-lg' if is_last_row %>">
-    <time datetime="<%= game.scheduled_at.iso8601 %>">
-      <%= game.scheduled_at.in_time_zone("Eastern Time (US & Canada)").to_formatted_s(:short) %>
-    </time>
+    <%= local_relative_time(game.scheduled_at, type: 'weekday-or-date' ) %> @ <%= local_time(game.scheduled_at, format: '%-I:%M %p') %>
   </td>
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
     <%= game.rink %>

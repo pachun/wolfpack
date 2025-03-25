@@ -43,8 +43,7 @@ class GamesViewTest < ActionView::TestCase
 
     assert_includes rendered, "game-list-item-#{game.id}"
 
-    assert_dom "time[datetime='#{game.scheduled_at.iso8601}']",
-      text: game.scheduled_at.in_time_zone("Eastern Time (US & Canada)").to_formatted_s(:short)
+    assert_dom "time[datetime='#{game.scheduled_at.iso8601}']"
     assert_includes rendered, game.rink
     assert_includes rendered, game.home_team
     assert_includes rendered, game.away_team

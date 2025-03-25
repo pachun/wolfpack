@@ -70,3 +70,4 @@ group :production do
 end
 
 gem "tailwindcss-rails"
+gem "local_time"
