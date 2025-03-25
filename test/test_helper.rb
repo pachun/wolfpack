@@ -11,5 +11,8 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    # https://github.com/thoughtbot/factory_bot/blob/main/GETTING_STARTED.md#minitest-rails
+    include FactoryBot::Syntax::Methods
   end
 end
