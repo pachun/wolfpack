@@ -1,4 +1,7 @@
 <tr class="game-list-item-<%= game.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+  <% is_home_team = game.home_team == "Wolfpack" %>
+  <% wolfpacks_score = is_home_team ? game.home_score : game.away_score %>
+  <% other_teams_score = is_home_team ? game.away_score : game.home_score %>
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-bl-lg' if is_last_row %>">
     <%= local_relative_time(game.scheduled_at, type: 'weekday-or-date' ) %> @ <%= local_time(game.scheduled_at, format: '%-I:%M %p') %>
   </td>
@@ -6,15 +9,12 @@
     <%= game.rink %>
   </td>
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
-    <%= game.home_team %>
+    <%= is_home_team ? "Home" : "Away" %>
   </td>
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
-    <%= game.home_score %>
+    <%= [game.home_team, game.away_team].find { |team| team != "Wolfpack" } %>
   </td>
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
-    <%= game.away_score %>
-  </td>
-  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-br-lg' if is_last_row %>">
-    <%= game.away_team %>
+    <%= wolfpacks_score %> - <%= other_teams_score %> <%= wolfpacks_score.present? && other_teams_score.present? && wolfpacks_score > other_teams_score ? "W" : "L" %>
   </td>
 </tr>

@@ -14,24 +14,44 @@ class GamesViewTest < ActionView::TestCase
 
     assert_select ".game-list", /Time/
     assert_select ".game-list", /Rink/
-    assert_select ".game-list", /Home Team/
-    assert_select ".game-list", /Away Team/
-    assert_select ".game-list", /Home Score/
-    assert_select ".game-list", /Away Score/
+    assert_select ".game-list", /Wolfpack/
+    assert_select ".game-list", /Opponent/
+    assert_select ".game-list", /Score/
   end
 
-  test "the game_list_item partial renders a single game" do
-    game = create :game, home_score: 2, away_score: 1
+  # assert_dom "a[href='#{edit_game_path(game)}']", text: "Edit"
+
+  test "the game_list_item partial renders a single game (home team wins)" do
+    game = create :game,
+      home_team: "Wolfpack",
+      away_team: "Rum Runners",
+      home_score: 2,
+      away_score: 1
 
     render partial: "games/game_list_item", locals: { game: game, is_last_row: true }
 
     assert_includes rendered, "game-list-item-#{game.id}"
     assert_includes rendered, game.rink
-    assert_includes rendered, game.home_team
-    assert_includes rendered, game.away_team
-    assert_includes rendered, game.home_score.to_s
-    assert_includes rendered, game.away_score.to_s
     assert_dom "time[datetime='#{game.scheduled_at.iso8601}']"
-    # assert_dom "a[href='#{edit_game_path(game)}']", text: "Edit"
+    assert_includes rendered, "Rum Runners"
+    assert_includes rendered, "Home"
+    assert_includes rendered, "2 - 1 W"
+  end
+
+  test "the game_list_item partial renders a single game (home team losses)" do
+    game = create :game,
+      home_team: "Wolfpack",
+      away_team: "Rum Runners",
+      home_score: 1,
+      away_score: 2
+
+    render partial: "games/game_list_item", locals: { game: game, is_last_row: true }
+
+    assert_includes rendered, "game-list-item-#{game.id}"
+    assert_includes rendered, game.rink
+    assert_dom "time[datetime='#{game.scheduled_at.iso8601}']"
+    assert_includes rendered, "Rum Runners"
+    assert_includes rendered, "Home"
+    assert_includes rendered, "1 - 2 L"
   end
 end
