@@ -1,0 +1,54 @@
+<div class="game-form-<%= game.id %>">
+  <%= form_with model: game, local: true, class: "space-y-6 max-w-xl" do |f| %>
+    <%= render partial: "shared/form_errors", locals: { model: game } %>
+
+    <!-- Scheduled At -->
+    <div>
+      <%= f.label :scheduled_at, "Scheduled At", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" %>
+      <%= f.text_field :scheduled_at,
+            type: "datetime-local",
+            data: {
+              controller: "datetime-local",
+              datetime_local_datetime_value: game.scheduled_at.iso8601
+            },
+            class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <!-- Home Team -->
+    <div>
+      <%= f.label :home_team, "Home Team", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" %>
+      <%= f.text_field :home_team, class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <!-- Away Team -->
+    <div>
+      <%= f.label :away_team, "Away Team", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" %>
+      <%= f.text_field :away_team, class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <!-- Home Score -->
+    <div>
+      <%= f.label :home_score, "Home Score", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" %>
+      <%= f.number_field :home_score, class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <!-- Away Score -->
+    <div>
+      <%= f.label :away_score, "Away Score", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" %>
+      <%= f.number_field :away_score, class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <!-- Rink -->
+    <div>
+      <%= f.label :rink, "Rink", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" %>
+      <%= f.select :rink, ["A", "B", "C", "D"], {}, class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+    </div>
+
+    <!-- Submit and Cancel -->
+    <div class="flex justify-between items-center">
+      <%= f.submit "Save", class: "inline-block px-5 py-2.5 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+
+      <%= link_to "Cancel", game_path(game), class: "text-base font-medium text-gray-700 dark:text-gray-300 hover:underline" %>
+    </div>
+  <% end %>
+</div>

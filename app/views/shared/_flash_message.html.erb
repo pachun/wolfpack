@@ -1,0 +1,10 @@
+<% flash.each do |type, message| %>
+  <% next if message.blank? %>
+  <% flash_classes = {
+    notice: "bg-green-100 text-green-800 border border-green-300",
+    error:  "bg-red-100 text-red-800 border border-red-300"
+  } %>
+  <div class="flash-message text-center max-w-xl mx-auto mb-4 p-4 rounded-lg shadow-sm <%= flash_classes[type.to_sym] || 'bg-gray-100 text-gray-800 border border-gray-300' %>">
+    <p><%= message %></p>
+  </div>
+<% end %>

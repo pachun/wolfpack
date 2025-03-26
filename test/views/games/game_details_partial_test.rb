@@ -25,4 +25,12 @@ class GameDetailsPartialTest < ActionView::TestCase
       assert_dom "div", text: "Rink #{game.rink}"
     end
   end
+
+  test "shows a link to edit the game" do
+    game = create :game
+
+    render partial: "games/game_details", locals: { game: game }
+
+    assert_select "a[href='#{edit_game_path(game)}']", text: "Edit"
+  end
 end
