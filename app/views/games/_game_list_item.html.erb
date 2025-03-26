@@ -1,4 +1,7 @@
-<tr class="game-list-item-<%= game.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+<tr class="game-list-item-<%= game.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+  data-controller="clickable-row"
+  data-clickable-row-url-value="<%= game_path(game) %>"
+  data-action="click->clickable-row#navigate">
   <% is_home_team = game.home_team == "Wolfpack" %>
   <% wolfpacks_score = is_home_team ? game.home_score : game.away_score %>
   <% other_teams_score = is_home_team ? game.away_score : game.home_score %>
