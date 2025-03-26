@@ -11,6 +11,13 @@ class GamesViewTest < ActionView::TestCase
       assert_dom ".game-list-item-#{game_1.id}"
       assert_dom ".game-list-item-#{game_2.id}"
     end
+
+    assert_select ".game-list", /Time/
+    assert_select ".game-list", /Rink/
+    assert_select ".game-list", /Home Team/
+    assert_select ".game-list", /Away Team/
+    assert_select ".game-list", /Home Score/
+    assert_select ".game-list", /Away Score/
   end
 
   test "the game_list_item partial renders a single game" do
