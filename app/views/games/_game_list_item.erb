@@ -14,10 +14,7 @@
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
     <%= game.away_score %>
   </td>
-  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200">
-    <%= game.away_team %>
-  </td>
   <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-br-lg' if is_last_row %>">
-    <%= link_to "Edit", edit_game_path(game), class: "text-indigo-600 hover:text-indigo-900 font-medium" %>
+    <%= game.away_team %>
   </td>
 </tr>
