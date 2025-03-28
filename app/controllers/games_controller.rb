@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [ :show, :edit, :update ]
+  before_action :set_game, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @games = Game.all
@@ -18,6 +18,25 @@ class GamesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def new
+    @game = Game.new
+  end
+
+  def create
+    @game = Game.create(game_params)
+    if @game.errors.any?
+      render :new, status: :unprocessable_entity
+    else
+      redirect_to game_path(@game)
+    end
+  end
+
+  def destroy
+    @game.destroy
+    flash[:notice] = "Deleted #{@game.away_team} @ #{@game.home_team}"
+    redirect_to games_path
   end
 
   private

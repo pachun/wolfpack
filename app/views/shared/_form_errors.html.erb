@@ -1,5 +1,5 @@
 <% if model.errors.any? %>
-  <div class="<%= "#{model.model_name.singular}-form-errors-#{model.id}" %> mb-4 rounded-lg border border-red-300 bg-red-100 text-red-800 px-4 py-3 text-sm">
+  <div class="<%= "#{model.model_name.singular}-form-errors-#{model.id.present? ? model.id : "new-#{model.model_name.singular}"}" %> mb-4 rounded-lg border border-red-300 bg-red-100 text-red-800 px-4 py-3 text-sm">
     <h2 class="font-semibold mb-2">
       <%= pluralize(model.errors.count, "error") %> prevented this <%= model.model_name.singular %> from being saved:
     </h2>

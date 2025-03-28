@@ -1,4 +1,4 @@
-<div class="game-form-<%= game.id %>">
+<div class="game-form-<%= game.id.present? ? game.id : "new-game" %>">
   <%= form_with model: game, local: true, class: "space-y-6 max-w-xl" do |f| %>
     <%= render partial: "shared/form_errors", locals: { model: game } %>
 
@@ -9,7 +9,7 @@
             type: "datetime-local",
             data: {
               controller: "datetime-local",
-              datetime_local_datetime_value: game.scheduled_at.iso8601
+              datetime_local_datetime_value: (game.scheduled_at&.iso8601 || 1.hour.from_now),
             },
             class: "w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 dark:bg-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
     </div>
@@ -48,7 +48,7 @@
     <div class="flex justify-between items-center">
       <%= f.submit "Save", class: "inline-block px-5 py-2.5 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500" %>
 
-      <%= link_to "Cancel", game_path(game), class: "text-base font-medium text-gray-700 dark:text-gray-300 hover:underline" %>
+      <%= link_to "Cancel", game.id.present? ? game_path(game) : games_path, class: "text-base font-medium text-gray-700 dark:text-gray-300 hover:underline" %>
     </div>
   <% end %>
 </div>

@@ -33,4 +33,19 @@ class GameDetailsPartialTest < ActionView::TestCase
 
     assert_select "a[href='#{edit_game_path(game)}']", text: "Edit"
   end
+
+  test "shows a link to delete the game" do
+    game = create :game
+
+    render partial: "games/game_details", locals: { game: game }
+
+    href = "href='#{game_path(game)}'"
+    data_method = "data-method='delete'"
+    data_confirm = "data-confirm='Are you sure you want to delete this game?'"
+
+    assert_select "form.button_to[method='post'][action='#{game_path(game)}']" do
+      assert_select "input[name='_method'][value='delete']"
+      assert_select "button[data-confirm='Are you sure you want to delete this game?']", text: "Delete"
+    end
+  end
 end

@@ -15,7 +15,7 @@ class FormErrorsPartialTest < ActionView::TestCase
 
     render partial: "shared/form_errors", locals: { model: game }
 
-    assert_select ".game-form-errors-#{game.id}" do
+    assert_select ".game-form-errors-new-game" do
       assert_select "h2", text: "2 errors prevented this game from being saved:"
       assert_select "ul li", text: "Home team can't be blank"
       assert_select "ul li", text: "Away team can't be blank"

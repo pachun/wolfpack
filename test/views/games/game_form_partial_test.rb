@@ -40,8 +40,21 @@ class GameFormPartialTest < ActionView::TestCase
 
     # Submit button
     assert_select "input[type='submit'],button[type='submit']"
+  end
 
-    # Cancel link
+  test "shows a cancel link to go back to the game show screen" do
+    game = create :game
+
+    render partial: "games/game_form", locals: { game: game }
+
     assert_select "a[href='#{game_path(game)}']", text: /Cancel/i
+  end
+
+  test "shows a cancel link to go back to the games index screen" do
+    game = build :game
+
+    render partial: "games/game_form", locals: { game: game }
+
+    assert_select "a[href='#{games_path}']", text: /Cancel/i
   end
 end

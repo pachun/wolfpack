@@ -78,4 +78,54 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
 
     assert_dom ".game-form-errors-#{game.id}"
   end
+
+  test "new renders a form" do
+    game = build :game
+
+    get new_game_path
+
+    assert_dom "h1", "New Game"
+    assert_dom ".game-form-new-game"
+  end
+
+  test "create saves a new game" do
+    post games_path, params: { game: {
+      rink: "B",
+      home_team: "Wolves",
+      away_team: "Sharks",
+      home_score: 4,
+      away_score: 5,
+      scheduled_at: "2025-03-01T20:45",
+    } }
+
+    game = Game.last
+
+    assert_redirected_to game_path(game)
+  end
+
+  test "create displays form errors when present" do
+    post games_path, params: { game: {
+      rink: "B",
+      home_team: "",
+      away_team: "",
+      home_score: 4,
+      away_score: 5,
+      scheduled_at: "2025-03-01T20:45",
+    } }
+
+    assert_response :unprocessable_entity
+    assert_dom ".game-form-errors-new-game"
+  end
+
+  test "destroy removes a game" do
+    game = create :game,
+      away_team: "Sharks",
+      home_team: "Wolves"
+
+    delete game_path(game)
+
+    assert_redirected_to games_path
+    assert_nil Game.find_by(id: game.id)
+    assert_equal "Deleted Sharks @ Wolves", flash[:notice]
+  end
 end
