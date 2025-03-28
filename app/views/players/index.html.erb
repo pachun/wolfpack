@@ -1,0 +1,7 @@
+<h1>Wolfpack Players</h1>
+
+<div class="player-list">
+  <% @players.each do |player| %>
+    <div class="player-list-item-<%= player.id %>" />
+  <% end %>
+</div>
