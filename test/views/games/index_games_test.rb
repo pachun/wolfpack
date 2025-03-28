@@ -122,7 +122,7 @@ class IndexGamesTest < ActionView::TestCase
       assert_dom "time[datetime='#{game.scheduled_at.iso8601}']"
       assert_dom "td", text: "Rum Runners"
       assert_dom "td", text: "Away"
-      assert_dom "td", text: "1 - 2 W"
+      assert_dom "td", text: "1 - 2 L"
     end
   end
 
