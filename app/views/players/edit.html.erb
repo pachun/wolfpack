@@ -1,0 +1,6 @@
+<% first_name = @player.first_name.presence || @player.first_name_was %>
+<% last_name = @player.last_name.presence || @player.last_name_was %>
+
+<h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Edit <%= first_name %> <%= last_name %></h1>
+
+<%= render partial: "players/form", locals: { player: @player } %>

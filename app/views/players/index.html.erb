@@ -1,0 +1,33 @@
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
+    Players
+  </h1>
+
+  <%= link_to "Create Player", new_player_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+</div>
+
+<div class="player-list overflow-x-auto">
+  <table class="w-full table-fixed bg-white dark:bg-gray-800 rounded-lg shadow">
+    <thead>
+      <tr>
+        <th class="px-6 py-3 border-b border-gray-200 dark:border-gray-700 text-left text-sm font-medium text-gray-600 dark:text-gray-300">
+          Name
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @players.each_with_index do |player, index| %>
+        <% is_last_row = index == @players.size - 1 %>
+        <tr class="player-list-item-<%= player.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+          data-controller="clickable-row"
+          data-clickable-row-url-value="<%= player_path(player) %>"
+          data-action="click->clickable-row#navigate">
+          <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-bl-lg' if is_last_row %>">
+            <%= [player.first_name, player.last_name].join(" ") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
