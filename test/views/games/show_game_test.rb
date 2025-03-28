@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ShowGameTest < ActionView::TestCase
+class GamesShowTest < ActionView::TestCase
   test "shows game details" do
     @game = create :game,
       home_team: "Wolfpack",

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GameFormPartialTest < ActionView::TestCase
+class GamesFormTest < ActionView::TestCase
   test "renders a game form" do
     game = create :game
 
