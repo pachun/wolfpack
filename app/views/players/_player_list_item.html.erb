@@ -1,0 +1,8 @@
+<tr class="player-list-item-<%= player.id %> hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
+  data-controller="clickable-row"
+  data-clickable-row-url-value="<%= player_path(player) %>"
+  data-action="click->clickable-row#navigate">
+  <td class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 whitespace-nowrap text-gray-800 dark:text-gray-200 <%= 'rounded-bl-lg' if is_last_row %>">
+    <%= [player.first_name, player.last_name].join(" ") %>
+  </td>
+</tr>

@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+Dir[Rails.root.join("test/helpers/**/*.rb")].sort.each { |f| require f }
 
 module ActiveSupport
   class TestCase
@@ -15,4 +16,8 @@ module ActiveSupport
     # https://github.com/thoughtbot/factory_bot/blob/main/GETTING_STARTED.md#minitest-rails
     include FactoryBot::Syntax::Methods
   end
+end
+
+class ActionView::TestCase
+  include ActionViewTestHelpers
 end

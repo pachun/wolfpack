@@ -1,7 +1,7 @@
 
 require "test_helper"
 
-class GamesEditViewTest < ActionView::TestCase
+class IndexGamesTest < ActionView::TestCase
   test "renders a Wolfpack Games header" do
     @games = []
 
