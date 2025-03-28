@@ -4,7 +4,7 @@ class GameFormPartialTest < ActionView::TestCase
   test "renders a game form" do
     game = create :game
 
-    render partial: "games/game_form", locals: { game: game }
+    render partial: "games/form", locals: { game: game }
 
     # Form element
     assert_select "form[action='#{game_path(game)}'][method='post']"
@@ -45,7 +45,7 @@ class GameFormPartialTest < ActionView::TestCase
   test "shows a cancel link to go back to the game show screen" do
     game = create :game
 
-    render partial: "games/game_form", locals: { game: game }
+    render partial: "games/form", locals: { game: game }
 
     assert_select "a[href='#{game_path(game)}']", text: /Cancel/i
   end
@@ -53,7 +53,7 @@ class GameFormPartialTest < ActionView::TestCase
   test "shows a cancel link to go back to the games index screen" do
     game = build :game
 
-    render partial: "games/game_form", locals: { game: game }
+    render partial: "games/form", locals: { game: game }
 
     assert_select "a[href='#{games_path}']", text: /Cancel/i
   end
