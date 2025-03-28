@@ -16,16 +16,16 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  # test "show renders a single game" do
-  #   game = create :game
-  #
-  #   get game_path(game)
-  #
-  #   assert_response :success
-  #
-  #   assert_dom ".game-details-#{game.id}"
-  # end
-  #
+  test "show renders a single player" do
+    player = create :player
+
+    get player_path(player)
+
+    assert_response :success
+
+    assert_dom ".game-details-#{player.id}"
+  end
+
   # test "edit renders an editable form" do
   #   game = create :game
   #
