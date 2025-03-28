@@ -21,7 +21,9 @@ class PlayersIndexTest < ActionView::TestCase
     player_1 = create :player
     player_2 = create :player
 
-    render partial: "players/player_list", locals: { players: [ player_1, player_2 ] }
+    @players = [ player_1, player_2 ]
+
+    render template: "players/index"
 
     assert_dom ".player-list" do
       assert_select "th", text: "Name"
