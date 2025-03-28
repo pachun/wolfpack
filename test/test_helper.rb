@@ -17,7 +17,3 @@ module ActiveSupport
     include FactoryBot::Syntax::Methods
   end
 end
-
-class ActionView::TestCase
-  include ActionViewTestHelpers
-end
