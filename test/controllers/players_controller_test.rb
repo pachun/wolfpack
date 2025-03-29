@@ -77,21 +77,17 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".player-form-new"
   end
 
-  # test "create saves a new game" do
-  #   post games_path, params: { game: {
-  #     rink: "B",
-  #     home_team: "Wolves",
-  #     away_team: "Sharks",
-  #     home_score: 4,
-  #     away_score: 5,
-  #     scheduled_at: "2025-03-01T20:45",
-  #   } }
-  #
-  #   game = Game.last
-  #
-  #   assert_redirected_to game_path(game)
-  # end
-  #
+  test "create saves a new player" do
+    post players_path, params: { player: {
+      first_name: "John",
+      last_name: "Cena",
+    } }
+
+    player = Player.last
+
+    assert_redirected_to player_path(player)
+  end
+
   # test "create displays form errors when present" do
   #   post games_path, params: { game: {
   #     rink: "B",
