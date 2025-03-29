@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FormErrorsPartialTest < ActionView::TestCase
+class FormErrorsTest < ActionView::TestCase
   test "renders nothing when there are no errors" do
     game = create :game
 

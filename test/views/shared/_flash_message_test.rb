@@ -1,6 +1,6 @@
 require "test_helper"
 
-class FlashMessagePartialTest < ActionView::TestCase
+class FlashMessageTest < ActionView::TestCase
   test "renders a flash notice" do
     flash[:notice] = "Hello, Flash Notice!"
 
