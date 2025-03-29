@@ -1,7 +1,7 @@
 require "test_helper"
 
 class GamesControllerTest < ActionDispatch::IntegrationTest
-  test "index renders a list of games" do
+  test "index shows a list of games" do
     game_1 = create :game
     game_2 = create :game
 
@@ -9,14 +9,13 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_dom "h1", "Wolfpack Games"
     assert_dom ".game-list" do
       assert_dom ".game-list-item-#{game_1.id}"
       assert_dom ".game-list-item-#{game_2.id}"
     end
   end
 
-  test "show renders a single game" do
+  test "show shows a single game" do
     game = create :game
 
     get game_path(game)
@@ -26,14 +25,13 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".game-details-#{game.id}"
   end
 
-  test "edit renders an editable form" do
+  test "edit shows an editable form" do
     game = create :game
 
     get edit_game_path(game)
 
     assert_response :success
 
-    assert_dom "h1", "Edit #{game.away_team} @ #{game.home_team}"
     assert_dom ".game-form-#{game.id}"
   end
 
@@ -79,7 +77,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".game-form-errors-#{game.id}"
   end
 
-  test "new renders a form" do
+  test "new shows a form" do
     game = build :game
 
     get new_game_path

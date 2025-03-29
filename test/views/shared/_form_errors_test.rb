@@ -1,7 +1,7 @@
 require "test_helper"
 
 class FormErrorsTest < ActionView::TestCase
-  test "renders nothing when there are no errors" do
+  test "shows nothing when there are no errors" do
     game = create :game
 
     render partial: "shared/form_errors", locals: { model: game }
@@ -9,7 +9,7 @@ class FormErrorsTest < ActionView::TestCase
     refute_includes rendered, ".game-form-errors-#{game.id}"
   end
 
-  test "renders errors when present" do
+  test "shows errors when present" do
     game = build :game, home_team: "", away_team: ""
     game.validate
 

@@ -1,7 +1,7 @@
 require "test_helper"
 
 class GamesFormTest < ActionView::TestCase
-  test "renders a game form" do
+  test "shows a game form" do
     game = create :game
 
     render partial: "games/form", locals: { game: game }

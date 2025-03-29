@@ -1,15 +1,15 @@
 require "test_helper"
 
 class PlayersIndexTest < ActionView::TestCase
-  test "renders a Wolfpack Players header" do
+  test "shows a Wolfpack Players header" do
     @players = []
 
     render template: "players/index"
 
-    assert_dom "h1", text: "Wolfpack Players"
+    assert_dom "h1", text: "Players"
   end
 
-  test "renders a link to create a new player" do
+  test "shows a link to create a new player" do
     @players = []
 
     render template: "players/index"
@@ -17,7 +17,7 @@ class PlayersIndexTest < ActionView::TestCase
     assert_dom "a[href='#{new_player_path}']", text: /Create Player/i
   end
 
-  test "renders a list of players" do
+  test "shows a list of players" do
     player_1 = create :player
     player_2 = create :player
 

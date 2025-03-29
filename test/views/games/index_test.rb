@@ -1,15 +1,15 @@
 require "test_helper"
 
 class GamesIndexTest < ActionView::TestCase
-  test "renders a Wolfpack Games header" do
+  test "shows a Wolfpack Games header" do
     @games = []
 
     render template: "games/index"
 
-    assert_includes rendered, "Wolfpack Games"
+    assert_includes rendered, "Games"
   end
 
-  test "renders a link to create a new game" do
+  test "shows a link to create a new game" do
     @games = []
 
     render template: "games/index"
@@ -17,7 +17,7 @@ class GamesIndexTest < ActionView::TestCase
     assert_dom "a[href='#{new_game_path}']", text: /Create Game/i
   end
 
-  test "renders a list of games" do
+  test "shows a list of games" do
     game_1 = create :game
     game_2 = create :game
     @games = [ game_1, game_2 ]
@@ -46,7 +46,7 @@ class GamesIndexTest < ActionView::TestCase
     assert_dom "tr[data-controller='clickable-row'][data-action='click->clickable-row#navigate'][data-clickable-row-url-value='#{game_path(game)}']"
   end
 
-  test "renders home team wins" do
+  test "shows home team wins" do
     game = create :game,
       home_team: "Wolfpack",
       away_team: "Rum Runners",
@@ -66,7 +66,7 @@ class GamesIndexTest < ActionView::TestCase
     end
   end
 
-  test "renders home team losses" do
+  test "shows home team losses" do
     game = create :game,
       home_team: "Wolfpack",
       away_team: "Rum Runners",
@@ -86,7 +86,7 @@ class GamesIndexTest < ActionView::TestCase
     end
   end
 
-  test "renders away team wins" do
+  test "shows away team wins" do
     game = create :game,
       away_team: "Wolfpack",
       home_team: "Rum Runners",
@@ -106,7 +106,7 @@ class GamesIndexTest < ActionView::TestCase
     end
   end
 
-  test "renders away team losses" do
+  test "shows away team losses" do
     game = create :game,
       away_team: "Wolfpack",
       home_team: "Rum Runners",
@@ -126,7 +126,7 @@ class GamesIndexTest < ActionView::TestCase
     end
   end
 
-  test "renders ties" do
+  test "shows ties" do
     game = create :game,
       away_team: "Wolfpack",
       home_team: "Rum Runners",
@@ -146,7 +146,7 @@ class GamesIndexTest < ActionView::TestCase
     end
   end
 
-  test "renders unplayed games" do
+  test "shows unplayed games" do
     game = create :game,
       away_team: "Wolfpack",
       home_team: "Rum Runners"

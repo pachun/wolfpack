@@ -1,15 +1,15 @@
 require "test_helper"
 
 class NavbarTest < ActionView::TestCase
-  test "renders a link to the games schedule" do
+  test "shows a link to the games schedule" do
     render partial: "shared/navbar"
 
-    assert_select "a[href='#{games_path}']", text: "Wolfpack Games"
+    assert_select "a[href='#{games_path}']", text: "Games"
   end
 
-  test "renders a link to the players list" do
+  test "shows a link to the players list" do
     render partial: "shared/navbar"
 
-    assert_select "a[href='#{players_path}']", text: "Wolfpack Players"
+    assert_select "a[href='#{players_path}']", text: "Players"
   end
 end

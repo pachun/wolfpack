@@ -1,7 +1,7 @@
 require "test_helper"
 
 class FlashMessageTest < ActionView::TestCase
-  test "renders a flash notice" do
+  test "shows a flash notice" do
     flash[:notice] = "Hello, Flash Notice!"
 
     render partial: "shared/flash_message"
@@ -11,7 +11,7 @@ class FlashMessageTest < ActionView::TestCase
     end
   end
 
-  test "renders a flash error" do
+  test "shows a flash error" do
     flash[:error] = "Hello, Flash Error!"
 
     render partial: "shared/flash_message"

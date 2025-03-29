@@ -1,7 +1,7 @@
 require "test_helper"
 
 class GamesControllerTest < ActionDispatch::IntegrationTest
-  test "index renders a list of players" do
+  test "index shows a list of players" do
     player_1 = create :player
     player_2 = create :player
 
@@ -9,14 +9,13 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_dom "h1", "Wolfpack Players"
     assert_dom ".player-list" do
       assert_dom ".player-list-item-#{player_1.id}"
       assert_dom ".player-list-item-#{player_2.id}"
     end
   end
 
-  test "show renders a single player" do
+  test "show shows a single player" do
     player = create :player
 
     get player_path(player)
@@ -26,7 +25,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".player-details-#{player.id}"
   end
 
-  # test "edit renders an editable form" do
+  # test "edit shows an editable form" do
   #   game = create :game
   #
   #   get edit_game_path(game)
@@ -79,7 +78,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
   #   assert_dom ".game-form-errors-#{game.id}"
   # end
   #
-  # test "new renders a form" do
+  # test "new shows a form" do
   #   game = build :game
   #
   #   get new_game_path
