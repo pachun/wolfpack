@@ -88,19 +88,15 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to player_path(player)
   end
 
-  # test "create displays form errors when present" do
-  #   post games_path, params: { game: {
-  #     rink: "B",
-  #     home_team: "",
-  #     away_team: "",
-  #     home_score: 4,
-  #     away_score: 5,
-  #     scheduled_at: "2025-03-01T20:45",
-  #   } }
-  #
-  #   assert_response :unprocessable_entity
-  #   assert_dom ".game-form-errors-new-game"
-  # end
+  test "create displays form errors when present" do
+    post players_path, params: { player: {
+      first_name: "",
+      last_name: "",
+    } }
+
+    assert_response :unprocessable_entity
+    assert_dom ".player-form-errors-new"
+  end
 
   # test "destroy removes a game" do
   #   game = create :game,

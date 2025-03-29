@@ -27,11 +27,11 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.create(player_params)
-    # if @game.errors.any?
-    #   render :new, status: :unprocessable_entity
-    # else
-    redirect_to player_path(@player)
-    # end
+    if @player.errors.any?
+      render :new, status: :unprocessable_entity
+    else
+      redirect_to player_path(@player)
+    end
   end
 
   private

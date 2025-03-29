@@ -111,7 +111,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
     } }
 
     assert_response :unprocessable_entity
-    assert_dom ".game-form-errors-new-game"
+    assert_dom ".game-form-errors-new"
   end
 
   test "destroy removes a game" do
