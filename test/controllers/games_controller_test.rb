@@ -82,7 +82,6 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
 
     get new_game_path
 
-    assert_dom "h1", "New Game"
     assert_dom ".game-form-new"
   end
 

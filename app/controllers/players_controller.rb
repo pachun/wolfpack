@@ -21,6 +21,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def new
+    @player = Player.new
+  end
+
   private
 
   def player_params

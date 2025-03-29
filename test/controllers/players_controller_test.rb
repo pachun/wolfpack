@@ -69,15 +69,14 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".player-form-errors-#{player.id}"
   end
 
-  # test "new shows a form" do
-  #   game = build :game
-  #
-  #   get new_game_path
-  #
-  #   assert_dom "h1", "New Game"
-  #   assert_dom ".game-form-new-game"
-  # end
-  #
+  test "new shows a form" do
+    player = build :player
+
+    get new_player_path
+
+    assert_dom ".player-form-new"
+  end
+
   # test "create saves a new game" do
   #   post games_path, params: { game: {
   #     rink: "B",
@@ -106,7 +105,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :unprocessable_entity
   #   assert_dom ".game-form-errors-new-game"
   # end
-  #
+
   # test "destroy removes a game" do
   #   game = create :game,
   #     away_team: "Sharks",
