@@ -8,3 +8,6 @@ LocalTime.start();
 document.addEventListener("turbo:morph", () => {
   LocalTime.run();
 });
+
+import Rails from "@rails/ujs";
+Rails.start();
