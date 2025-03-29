@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GamesControllerTest < ActionDispatch::IntegrationTest
+class PlayersControllerTest < ActionDispatch::IntegrationTest
   test "index shows a list of players" do
     player_1 = create :player
     player_2 = create :player
@@ -25,17 +25,16 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".player-details-#{player.id}"
   end
 
-  # test "edit shows an editable form" do
-  #   game = create :game
-  #
-  #   get edit_game_path(game)
-  #
-  #   assert_response :success
-  #
-  #   assert_dom "h1", "Edit #{game.away_team} @ #{game.home_team}"
-  #   assert_dom ".game-form-#{game.id}"
-  # end
-  #
+  test "edit shows an editable form" do
+    player = create :player
+
+    get edit_player_path(player)
+
+    assert_response :success
+
+    assert_dom ".player-form-#{player.id}"
+  end
+
   # test "update saves all game attributes" do
   #   game = create :game
   #
