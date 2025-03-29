@@ -98,15 +98,15 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
     assert_dom ".player-form-errors-new"
   end
 
-  # test "destroy removes a game" do
-  #   game = create :game,
-  #     away_team: "Sharks",
-  #     home_team: "Wolves"
-  #
-  #   delete game_path(game)
-  #
-  #   assert_redirected_to games_path
-  #   assert_nil Game.find_by(id: game.id)
-  #   assert_equal "Deleted Sharks @ Wolves", flash[:notice]
-  # end
+  test "destroy removes a player" do
+    player = create :player,
+      first_name: "Kevin",
+      last_name: "Malone"
+
+    delete player_path(player)
+
+    assert_redirected_to players_path
+    assert_nil Player.find_by(id: player.id)
+    assert_equal "Deleted Kevin Malone", flash[:notice]
+  end
 end

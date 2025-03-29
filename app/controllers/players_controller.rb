@@ -34,6 +34,13 @@ class PlayersController < ApplicationController
     end
   end
 
+  def destroy
+    @player = Player.find(params[:id])
+    @player.destroy
+    flash[:notice] = "Deleted #{@player.first_name} #{@player.last_name}"
+    redirect_to players_path
+  end
+
   private
 
   def player_params
