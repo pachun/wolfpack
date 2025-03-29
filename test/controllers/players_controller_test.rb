@@ -85,6 +85,7 @@ class PlayersControllerTest < ActionDispatch::IntegrationTest
 
     player = Player.last
 
+    assert_equal "Created John Cena", flash[:notice]
     assert_redirected_to player_path(player)
   end
 

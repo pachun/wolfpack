@@ -30,6 +30,7 @@ class PlayersController < ApplicationController
     if @player.errors.any?
       render :new, status: :unprocessable_entity
     else
+      flash[:notice] = "Created #{@player.first_name} #{@player.last_name}"
       redirect_to player_path(@player)
     end
   end
