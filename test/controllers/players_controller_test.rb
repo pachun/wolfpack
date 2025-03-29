@@ -23,7 +23,7 @@ class GamesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_dom ".game-details-#{player.id}"
+    assert_dom ".player-details-#{player.id}"
   end
 
   # test "edit renders an editable form" do
