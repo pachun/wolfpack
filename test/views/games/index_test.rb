@@ -14,7 +14,7 @@ class GamesIndexTest < ActionView::TestCase
 
     render template: "games/index"
 
-    assert_dom "a[href='#{new_game_path}']", text: /Create Game/i
+    assert_dom "a[href='#{new_game_path}']", text: /Add Game/i
   end
 
   test "shows a list of games" do

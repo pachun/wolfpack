@@ -14,7 +14,7 @@ class PlayersIndexTest < ActionView::TestCase
 
     render template: "players/index"
 
-    assert_dom "a[href='#{new_player_path}']", text: /Create Player/i
+    assert_dom "a[href='#{new_player_path}']", text: /Add Player/i
   end
 
   test "shows a list of players" do
